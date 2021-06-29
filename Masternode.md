@@ -1,52 +1,44 @@
 
-# SwapDex Masternode Guide
+# SwapDEX Masternode Guide
 
-This guide is for developer don't use if you don't know what are you doing.
+This guide will explain the steps required to set up a Masternode for the SwapDEX Smart Chain.
 
-## Requirements for running masternode:-
-1} Need ubuntu server to run masternode.Atleast 16gb ram 120gb ssd & 2core cpu.
+## Requirements for running a masternode:-
 
-2} 10000sdx for Masternode
+The following are the <b> minimum recommended requirements </b> to run a Masternode smoothly. If you use lower capacity device or VPS, we cannot guarantee your Masternode will run smoothly and you may not receive the full allotment of rewards. Using a device or VPS with higher specifications is not fine, but is not required.
 
-3} create metamask wallet & transfer 10010 sdx from exchange to that wallet.
+1) Ubuntu operating system with device or VPS with the following minimum specifications:
+```bash
+16GB RAM
+120GB SSD
+2 core CPU
+```
+
+2) A MetaMask wallet with at least 10,010 SDX in the wallet. While you only need 10,000 SDX to stake, we recommend the wallet holding a little more to cover gas fees.
 
 ## You are now ready to start installation process.
 
+This guide is written for the Ubuntu Operating System version 20.
+For those who are unfamiliar to using terminal commands in Ubuntu, you should write the commands written ``in these text boxes`` exactly as they are written in the guide and at the end of each line press enter.
+There will be commands which require you confirm you want to proceed or times you are prompted to enter your VPS password.
+This guide assumes you will confirm all processes and enter your password as required when prompted.
 
+# Install Tmux, Go & Gvm
 
-# Install Go & Gvm. 
-
-For building sdx you need go & gvm. This guide is for ubuntu 20.
-For proper installation guide follow this guide:-https://github.com/moovweb/gvm
+To run a Masternode, you will need Tmux Go & GVM.
+For full details, you can refer to https://github.com/moovweb/gvm however this guide includes all the steps you will need.
 
 ```bash 
 sudo apt update
 sudo apt upgrade
-bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
-  
+sudo apt install git
+sudo apt-get install tmux
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
 ```
-# Note:- Restart the terminal after first command.
+Restart the terminal
 
-## Debian/Ubuntu
-```bash
+```bashexport GOROOT_BOOTSTRAP=$G
 sudo apt-get install curl git mercurial make binutils bison gcc build-essential
-```
-List Go Versions
-To list all installed Go versions (The current version is prefixed with "=>"):
-```bash
-gvm list
-```
-To list all Go versions available for download:
-```bash
-gvm listall
-```
-Compiling Go 1.5+
-
-```bash
-gvm install go1.4 -B
-gvm use go1.4
-export GOROOT_BOOTSTRAP=$GOROOT
-gvm install go1.5
 ```
 
 # Installing Go 1.13.8+
@@ -60,26 +52,34 @@ gvm use go1.13.8
 git clone https://github.com/69th-byte/SmartDex-Chain.git sdxchain
 cd sdxchain 
 make all
-mv /root/sdxchain/build/bin/sdx /usr/bin/sdx
+sudo mv /root/sdxchain/build/bin/sdx /usr/bin/sdx
 ```
 # Last step of running Masternode.
 ```bash
-
 sdx account new
-$ give secure password
+[ENTER SECURE PASSWORD]
+```
+Take a note of the Address that is created, this is your server generated SDX Masternode Account Address.
 
-sdx init swapdex.json
-``` 
 ```bash
+sdx init swapdex.json
 nano pass.txt
 ```
 
-## $ Put your password here,which you used to create coinbase account.
-ctrl + x & y enter to save
+## $ Put the password here which you used to create server generated SDX Masternode Account.
+ctrl + x & y enter to save then exit the txt
 
+Open tmux
 ```bash
-sdx  --syncmode "full" --networkid 7879 --port 10303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8501 --rpcvhosts "*"   --rpcapi "db,eth,net,web3,personal,debug" --gcmode "archive" --identity "SwapDex Whale" --etherbase "coinbase address here" --unlock "coinbase account here" --password pass.txt console
+tmux
 ```
-Enter
+Now you will need to enter the details for your node. Entries within square brackets will be unique to each user, please remove the square brackets, but keep the quotation marks.
+```bash
+sdx  --syncmode "full" --networkid 7879 --port 10303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8501 --rpcvhosts "*"   --rpcapi "db,eth,net,web3,personal,debug" --gcmode "archive" --identity "[Name for node]" --etherbase "[SDX Masternode Account address]" --unlock "[SDX Masternode Account address]" --password pass.txt console
+```
 
-## Congratulations!! you have run your own Masternode.
+## Congratulations, you have now set up your own Masternode.
+
+The final step is to go to the SDXMaster site to stake your 10,000 SDX and attach your wallet to your node so you can start receiveing rewards.
+
+These details will be finalised once SDXMaster is finished...
