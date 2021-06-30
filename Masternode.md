@@ -17,10 +17,10 @@ The following are the <b> minimum recommended requirements </b> to run a Mastern
 
 # You are now ready to start installation process
 
-This guide is written for the Ubuntu Operating System version 20.
+This guide is written for the Ubuntu Operating System version 20. All commands should be performed in the Terminal - the shortcut to open terminal is ``Ctrl + Alt + T``.
 For those who are unfamiliar to using terminal commands in Ubuntu, you should write the commands written ``in these text boxes`` exactly as they are written in the guide and at the end of each line press enter.
 Where entries are provided in ``[Square Brackets]`` the description in the square bracket gives an indication of what you should enter, but the entry will be unique to each user. For these entries, the square brackets should not be included in your entry.
-Where entries are provided in ``"quatation marks"`` you need to keep the quotation marks.
+Where entries are provided in ``"quotation marks"`` you need to keep the quotation marks.
 There will be commands which require you confirm you want to proceed and times you are prompted to enter your password.
 This guide assumes you will confirm all processes and enter your password as required when prompted.
 
@@ -36,11 +36,11 @@ sudo apt update
 sudo apt upgrade
 sudo apt install git
 bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer) 
-sudo apt-get install curl git mercurial make binutils bison gcc build-essential
 ```
-Restart the terminal (close terminal and reopen - shortcut to reopen ``Ctrl + Alt + T``). Once the terminal is back up, get back to the action.
+Restart the terminal (close terminal and then reopen). Once the terminal is back up, get back to the action.
 
 ```bash
+sudo apt-get install curl git mercurial make binutils bison gcc build-essential
 gvm install go1.4 -B
 gvm use go1.4
 export GOROOT_BOOTSTRAP=$GOROOT
@@ -54,7 +54,7 @@ sudo apt-get install tmux
 git clone https://github.com/69th-byte/SmartDex-Chain.git sdxchain
 cd sdxchain 
 make all
-sudo mv /root/sdxchain/build/bin/sdx /usr/bin/sdx
+sudo mv /root/sdxchain/build/bin/sdx /usr/bin/sdx mv build/bin/sdx  /usr/bin/sdx
 ```
 
 ## Create your Masternode Account
@@ -64,7 +64,7 @@ Now you have the required software installed, you are ready to set up your
 sdx account new
 [ENTER SECURE PASSWORD - you will need this again soon]
 ```
-Take a note of the Address that is created, this is your server generated *SDX Masternode Account Address* which you will need shortly and which you will need to connect your wallet to your Masternode.
+Take a note of the Address that is created (we recommend copying it into a separate file for ease of reference, you will need it on two further occasions when setting up your Masternode), this is your server generated *SDX Masternode Account Address* which you will need shortly and which you will need to connect your wallet to your Masternode.
 
 ```bash
 sdx init swapdex.json
@@ -76,8 +76,8 @@ You will now need to enter the Password which you used to create server generate
 ```bash
 [ENTER SECURE PASSWORD]
 ctrl + x & y
-ctrl + x
 ```
+Press Enter to exit nano.
 
 ## Open tmux to start running your Masternode
 If you do not run your masternode within tmux, it will stop running when you exit and you will not receive rewards.
@@ -86,7 +86,7 @@ tmux
 ```
 
 ## Run the script to run your Masternode
-Please note there are a number of entries in the code below where you will need to provide unique information. Please ensure all lines of code are entered in the one command.
+Please note there are a number of entries in the code below where you will need to provide unique information. Please ensure all lines of code are entered in the one command. If you enter tmux and forgot to copy your SDX Masternode Account address you can enter the command ``exit`` to end the tmux session to find your SDX Masternode Account address.
 
 ``
 sdx  --syncmode "full" --networkid 7879 --port 10303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8501 --rpcvhosts "*"   --rpcapi "db,eth,net,web3,personal,debug" --gcmode "archive" --identity "[Name for node]" --etherbase "[SDX Masternode Account address]" --unlock "[SDX Masternode Account address]" --mine --gasprice 2500 --password pass.txt console
