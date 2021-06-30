@@ -17,7 +17,7 @@ The following are the <b> minimum recommended requirements </b> to run a Mastern
 
 # You are now ready to start installation process
 
-This guide is written for the Ubuntu Operating System version 20. All commands should be performed in the Terminal - the shortcut to open terminal is ``Ctrl + Alt + T``.
+This guide is written for the Ubuntu Operating System version 20. All commands should be performed in the terminal application - the shortcut to open terminal is ``Ctrl + Alt + T``.
 For those who are unfamiliar to using terminal commands in Ubuntu, you should write the commands written ``in these text boxes`` exactly as they are written in the guide and at the end of each line press enter.
 Where entries are provided in ``[Square Brackets]`` the description in the square bracket gives an indication of what you should enter, but the entry will be unique to each user. For these entries, the square brackets should not be included in your entry.
 Where entries are provided in ``"quotation marks"`` you need to keep the quotation marks.
@@ -30,6 +30,7 @@ To copy within Ubuntu press ``Ctrl + Shift + C`` and to paste press ``Ctrl + Shi
 
 To run a Masternode, you will need tmux, Go & GVM.
 For full details on GVM, you can refer to https://github.com/moovweb/gvm however this guide includes all the steps you will need.
+Start by opening terminal and entering the following 
 
 ```bash 
 sudo apt update
@@ -58,7 +59,7 @@ sudo mv build/bin/sdx  /usr/bin/sdx
 ```
 
 ## Create your Masternode Account
-Now you have the required software installed, you are ready to set up your 
+Now you have the required software installed, you are ready to set up your Masternode Account. 
 
 ```bash
 sdx account new
