@@ -24,7 +24,7 @@ Where entries are provided in ``"quotation marks"`` you need to keep the quotati
 There will be commands which require you confirm you want to proceed and times you are prompted to enter your password.
 This guide assumes you will confirm all processes and enter your password as required when prompted.
 
-To copy within Unbuntu press ``Ctrl + Shift + C`` and to paste press ``Ctrl + Shift + V``.
+To copy within Ubuntu press ``Ctrl + Shift + C`` and to paste press ``Ctrl + Shift + V``.
 
 ## Install tmux, Go & Gvm
 
@@ -54,7 +54,7 @@ sudo apt-get install tmux
 git clone https://github.com/69th-byte/SmartDex-Chain.git sdxchain
 cd sdxchain 
 make all
-sudo mv /root/sdxchain/build/bin/sdx /usr/bin/sdx mv build/bin/sdx  /usr/bin/sdx
+sudo mv build/bin/sdx  /usr/bin/sdx
 ```
 
 ## Create your Masternode Account
