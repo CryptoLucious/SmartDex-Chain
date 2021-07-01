@@ -7,11 +7,11 @@ This guide will explain the steps required to set up a Masternode for the SmartD
 
 The following are the <b> minimum recommended requirements </b> to run a Masternode smoothly. If you use lower capacity device or VPS, we cannot guarantee your Masternode will run smoothly and you may not receive the full allotment of rewards. Using a device or VPS with higher specifications is fine, but is not required.
 
-1) Ubuntu operating system with device or VPS with the following minimum specifications:
+1) Device/VPS running Ubuntu operating system with the following minimum specifications:
 
 * 16GB RAM
 * 120GB SSD
-* 2 core CPU
+* 6 Core CPU
 
 2) A MetaMask wallet with at least 10,010 SDX in the wallet. While you only need 10,000 SDX to stake, we recommend the wallet holding a little more to cover gas fees.
 
@@ -65,7 +65,8 @@ Now you have the required software installed, you are ready to set up your Maste
 sdx account new
 [ENTER SECURE PASSWORD - you will need this again soon]
 ```
-Take a note of the Address that is created (we recommend copying it into a separate file for ease of reference, you will need it on two further occasions when setting up your Masternode), this is your server generated *SDX Masternode Account Address* which you will need shortly and which you will need to connect your wallet to your Masternode.
+Take a note of the Address that is created (we recommend copying it into a separate file for ease of reference, you will need it on two further occasions when setting up your Masternode), this is your *SDX Masternode Server Account Address* which you will need shortly and which you will need to connect your wallet to your Masternode.
+**Please note you need to add 0x to the start of the SDX Masternode Server Account Address**
 
 ```bash
 sdx init swapdex.json
@@ -87,10 +88,11 @@ tmux
 ```
 
 ## Run the script to run your Masternode
-Please note there are a number of entries in the code below where you will need to provide unique information. Please ensure all lines of code are entered in the one command. If you enter tmux and forgot to copy your SDX Masternode Account address you can enter the command ``exit`` to end the tmux session to find your SDX Masternode Account address.
+Please note there are a number of entries in the code below where you will need to provide unique information. Please ensure all lines of code are entered in the one command.
+If you enter tmux and forgot to copy your SDX Masternode Server Account Address you can enter the command ``exit`` to end the tmux session to find your SDX Masternode Account address.
 
 ``
-sdx  --syncmode "full" --networkid 7879 --port 10303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8501 --rpcvhosts "*"   --rpcapi "db,eth,net,web3,personal,debug" --gcmode "archive" --identity "[Name for node]" --etherbase "[SDX Masternode Account address]" --unlock "[SDX Masternode Account address]" --mine --gasprice 2500 --password pass.txt console
+sdx  --syncmode "full" --networkid 7879 --port 10303 --rpc --rpccorsdomain "*" --rpcaddr 0.0.0.0 --rpcport 8501 --rpcvhosts "*"   --rpcapi "db,eth,net,web3,personal,debug" --gcmode "archive" --identity "[Name for node]" --etherbase "0x[SDX Masternode Server Account Address]" --unlock "0x[SDX Masternode Server Account Address]" --mine --gasprice 2500 --password pass.txt console
 ``
 
 ## Congratulations, you have now set up your own Masternode!
